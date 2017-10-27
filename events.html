@@ -66,48 +66,31 @@
 				<div class="pageTitle">Mes cours</div>
 			</div>
 			<div class="eventsWrap">
-				<div class="eventItem clear">
-					<a href="single-event.html" class="eventItemImg">
-						<img src="images/content/eventsItem.jpg" alt="">
-					</a>
 
-					
-					<div class="eventItemDesc">
-						<time class="eventItemTime" datetime="2017-10-27">vendredi 27 Octobre 2017 à 10h00</time>
-
-						<h3><a href="#">HTML/CSS</a></h3>
-						<p>In the sanctuary of a yoga studio, a retreat or a tranquil spot in the countryside, it’s easier to feel at peace. In the sanctuary of a yoga studio, a retreat or a tranquil spot in the countryside.</p>
-						<a href="#" class="eventLearnMore">Liste des participants
-							<i>
-								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="38px" height="38px" viewBox="0 0 38 38" enable-background="new 0 0 38 38" xml:space="preserve">
-									<path fill="#6BBFAC" d="M16.558 11.5l6.884 6.494l1.059 0.999v0.015L16.558 26.5L15.5 25.486l6.882-6.494L15.5 12.5L16.558 11.5z"/>
-								</svg>
-							</i>
-						</a>
-						<button class="btn btn-danger">Se désinscrire</button>
-					</div>
-				</div>
 
 				<span class="showMoreEvents">Voir plus</span>
 			</div>
 
 		</div>
 
-
-
-		<h2>Lecture et parsing du fichier employes.json</h2>
-		<button id="lecture">Lancer la lecture</button>
-		<div id="zone"></div>
 		<script>
 			$(function() {
-				$('#lecture').on('click', function(){
-					$.getJSON('https://api.myjson.com/bins/i0kwb',function(data){
-						$.each(data,function(index,d){
-							$('#zone').append('Prénom : ' + d.Prenom + '<br>');
-							$('#zone').append('Nom : ' + d.Nom + '<br>');
-							$('#zone').append('Age : ' + d.Age + '<br><br>');
-						});
+				$.getJSON('https://api.myjson.com/bins/yquzv',function(data){
+					$.each(data,function(index,d){
+						$('.eventsWrap').append(
+							'<div class="eventItem clear">'+
+							'<a href="#" class="eventItemImg">'+
+							'<img src="images/content/eventsItem.jpg" alt="">'+
+							'</a>'+
+							'<div class="eventItemDesc">'+
+							'<time class="eventItemTime" datetime="2017-10-27">'+ d.Horaire +'</time>'+
+							'<h3><a href="#">'+ d.Nom +'</a></h3>'+
+							'<p id="eventDesc">'+ d.Descriptif +'</p>'+
+							'<button class="btn">Liste des participants</button>'+
+							'<button class="btn btn-danger pull-right">Se désinscrire</button>'+
+							'</div>'+'</div>');
 					});
+
 				});
 			});
 		</script>
