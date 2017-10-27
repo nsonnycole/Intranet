@@ -1,6 +1,7 @@
 $(function() {
 $(document).ready(function(){
 
+checkCookie();
 
 function setCookie(nom, mdp) {
 
@@ -19,70 +20,49 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
-    return "yoo";
+    return "";
 }
 
 function checkCookie() {
     var user = getCookie("username");
     if (user != "") {
-        alert("Welcome again " + user);
+       // alert("Welcome again " + user);
+            
+            $('#connexion').html('Déconnexion');
     } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-            setCookie("username", user, 365);
-        }
+            $('#connexion').html('Connexion');
     }
 }
 
+
 $("#send").click(function(e) {
-    e.preventDefault();
-         /*var email = $('.email').val();
-        var mdp = $('.mdp').val();
+e.preventDefault();
 
-        setCookie(email, mdp);
-
-        console.log( getCookie(email) );*/
-
-        var email = $('.email').val();
-        var mdp = $('.mdp').val();
-
-        console.log(email);
-        console.log(mdp);
+var email = $('#email').val();
+var mdp = $('#mdp').val();
 
 
+ $.getJSON('https://api.myjson.com/bins/i0kwb',function(data){
+    $.each(data,function(index,d){
+    
+    if (email == d.identifiant && mdp == d.mdp) 
+      {
 
-         $.getJSON('https://api.myjson.com/bins/1cuu17',function(data){
-            $.each(data,function(index,d){
-            
-            if (email == e.Prenom && mdp == e.Nom) 
-              {
-                console.log("Success");
-              }
-              else
-                console.log("Echec");
-
-            });
-          });
-
-    /*      $.getJSON('https://api.myjson.com/bins/1cuu17',function(etudiants){
-            $.each(etudiants,function(index,e){
-                console.log(e.Prenom);
-              });
-          });*/
+        setCookie(d.identifiant, d.mdp);
+        document.location.href="http://localhost/intranet"
+        $('#connexion').text('Déconnexion');
+        console.log(user);
        
-        
+      }
+      else
+        removeCookie("username");
+
+    });
+  });
 
 });
 
 
-
-        /*if (email == e.Prenom && mdp == e.Nom) 
-              {
-                console.log("Success");
-              }
-              else
-                console.log("Echec");
-            */
 
 
     });
