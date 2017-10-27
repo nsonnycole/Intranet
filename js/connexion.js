@@ -35,15 +35,26 @@ function checkCookie() {
 }
 
 $("#send").click(function(e) {
-e.preventDefault();
-        console.log("je passe");
-        var email = $('.email').val();
+        e.preventDefault();
+         /*var email = $('.email').val();
         var mdp = $('.mdp').val();
 
         setCookie(email, mdp);
 
-        console.log( getCookie(email) );
+        console.log( getCookie(email) );*/
+
+
+        var jqxhr = $.getJSON( "json/etudiants.json", function() {
+          console.log( "success" );
+        });
+
+
 
 });
+
+
+
+
+
     });
 });
