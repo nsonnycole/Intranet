@@ -30,35 +30,36 @@ function checkCookie() {
             
             $('#connexion').html('Déconnexion');
     } else {
-            $('#connexion').html('Connexion');
+      
     }
 }
 
 
-$("#send").click(function(e) {
-e.preventDefault();
+      $("#send").click(function(e) {
+        e.preventDefault();
 
-var email = $('#email').val();
-var mdp = $('#mdp').val();
+        var email = $('#email').val();
+        var mdp = $('#mdp').val();
 
 
- $.getJSON('https://api.myjson.com/bins/i0kwb',function(data){
-    $.each(data,function(index,d){
-    
-    if (email == d.identifiant && mdp == d.mdp) 
-      {
+         $.getJSON('https://api.myjson.com/bins/i0kwb',function(data){
+            $.each(data,function(index,d){
+            
+            if (email == d.identifiant && mdp == d.mdp) 
+              {
 
-        setCookie(d.identifiant, d.mdp);
-        document.location.href="http://localhost/intranet"
-        $('#connexion').text('Déconnexion');
-        console.log(user);
-       
-      }
-      else
-        removeCookie("username");
+                setCookie(d.identifiant, d.mdp);
+                document.location.href="http://localhost/intranet"
+                $('#connexion').text('Déconnexion');
+                console.log(user);
+               
+              }
+              else
+                console.log("Echec");
+                console.log("a");
 
-    });
-  });
+            });
+          });
 
 });
 
