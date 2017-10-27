@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="js/jquery.selectric.min.js"></script>
 	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-
+	<script type="text/javascript" src="js/connexion.js"></script>
 
 </head>
 <body class="events">
@@ -41,7 +41,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="connexion.html">Connexion</a>
+						<a id="connexion" href="connexion.html">Connexion</a>
 						<ul>
 							<li><a href="single-event.html">Single event</a></li>
 						</ul>
@@ -67,8 +67,6 @@
 			</div>
 			<div class="eventsWrap">
 
-
-				<span class="showMoreEvents">Voir plus</span>
 			</div>
 
 		</div>
@@ -86,18 +84,48 @@
 							'<time class="eventItemTime" datetime="2017-10-27">'+ d.Horaire +'</time>'+
 							'<h3><a href="#">'+ d.Nom +'</a></h3>'+
 							'<p id="eventDesc">'+ d.Descriptif +'</p>'+
-							'<button class="btn">Liste des participants</button>'+
+							'<h3 id="particpants"><strong>Participants : nasosung</strong></h3>'+
 							'<button class="btn btn-danger pull-right">Se désinscrire</button>'+
 							'</div>'+'</div>');
 					});
 
 				});
+
+				var retrievedObject = localStorage.getItem('testObject'); 
+				if(retrievedObject){
+					
+
+					$('.eventsWrap').append(
+						'<div class="eventItem clear">'+
+						'<a href="#" class="eventItemImg">'+
+						'<img src="images/content/eventsItem.jpg" alt="">'+
+						'</a>'+
+						'<div class="eventItemDesc">'+
+						'<time class="eventItemTime" datetime="2017-10-27">lundi 08-18h</time>'+
+						'<h3><a href="#">Anglais</a></h3>'+
+						'<p id="eventDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>'+
+						'<h3 id="particpants"><strong>Participants :  nasosung, bokokev</strong></h3>'+
+						'<button class="btn btn-danger pull-right">Se désinscrire</button>'+
+						'</div>'+'</div>');
+
+				}
+
 			});
+
+			$(function() {
+				$('#connexion').html('Déconnexion');
+				$.getJSON('particpants.json',function(data){
+					$.each(data,function(index,d){
+						$('.particpants').append(d.etudiant + ',');
+					});
+				});
+			});
+
 		</script>
 
 
 	</section>
-	
+
 	<div class="copyright">
 		<p>Copyright &copy; 2015. Asana All rights reserved</p>
 	</div>
