@@ -29,8 +29,10 @@ function checkCookie() {
        // alert("Welcome again " + user);
             
             $('#connexion').html('Déconnexion');
+            $('#connexion').getAttribute("href", "http://localhost/intranet");
     } else {
-      
+
+            $('#connexion').html('Connexion');
     }
 }
 
@@ -50,13 +52,11 @@ function checkCookie() {
 
                 setCookie(d.identifiant, d.mdp);
                 document.location.href="http://localhost/intranet"
-                $('#connexion').text('Déconnexion');
                 console.log(user);
                
               }
               else
-                console.log("Echec");
-                console.log("a");
+               $('#error').html('Mot de passe ou identifiant invalide');;
 
             });
           });
