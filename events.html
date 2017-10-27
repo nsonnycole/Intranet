@@ -64,13 +64,14 @@
 		<div class="contentWrap">
 			<div class="pagePanel clear">
 				<div class="pageTitle">Mes cours</div>
-
 			</div>
 			<div class="eventsWrap">
 				<div class="eventItem clear">
 					<a href="single-event.html" class="eventItemImg">
 						<img src="images/content/eventsItem.jpg" alt="">
 					</a>
+
+					
 					<div class="eventItemDesc">
 						<time class="eventItemTime" datetime="2017-10-27">vendredi 27 Octobre 2017 à 10h00</time>
 
@@ -92,58 +93,40 @@
 
 		</div>
 
+
+
+		<h2>Lecture et parsing du fichier employes.json</h2>
+		<button id="lecture">Lancer la lecture</button>
+		<div id="zone"></div>
+		<script>
+			$(function() {
+				$('#lecture').on('click', function(){
+					console.log("je passe");
+					$.getJSON('json/etudiants.json',function(data){
+						$('#zone').append('Prénom : ' + data.Prenom + '<br>');
+						$('#zone').append('Nom : ' + data.Nom + '<br>');
+						$('#zone').append('Age : ' + data.Age + '<br>');
+					});
+				});
+			});
+		</script>
+
+
 	</section>
-	<footer id="footer" class="clear">
-		<div class="footerSocial clear">
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-instagram"></i></a>
-			<a href="#"><i class="fa fa-pinterest"></i></a>
-		</div>
-		<ul class="footerMenu clear">
-			<li><a href="#">Classes</a></li>
-			<li><a href="#">Events</a></li>
-			<li><a href="#">Shop</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Blog</a></li>
-			<li><a href="#">Contact</a></li>
+	
+	<div class="copyright">
+		<p>Copyright &copy; 2015. Asana All rights reserved</p>
+	</div>
+	<div class="mobileMenu">
+		<ul>
+			<li class="current-menu-item"><a href="index.html">Accueil</a></li>
+			<li class="current-menu-item"><a href="classes.html">Intranet</a>
+				<ul class="sub-menu">
+					<li><a href="events.html">Mes cours</a></li>
+				</ul>
+			</li>
+			<li class="current-menu-item"><a href="index.html">Déconnexion</a></li>
 		</ul>
-		<div class="footerSubscribe">
-			<form>
-				<input class="" type="text" name="" size="20" value="" placeholder="Your email">
-				<input class="btnSubscribe" type="submit" value="Subscribe">
-			</form>
-		</div>
-		<div class="copyright">
-			<p>Copyright &copy; 2015. Asana All rights reserved</p>
-		</div>
-		<footer id="footer" class="clear">
-			<div class="footerSocial clear">
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-instagram"></i></a>
-				<a href="#"><i class="fa fa-pinterest"></i></a>
-			</div>
-			<div class="footerSubscribe">
-				<form>
-					<input class="" type="text" name="" size="20" value="" placeholder="Your email">
-					<input class="btnSubscribe" type="submit" value="Subscribe">
-				</form>
-			</div>
-			<div class="copyright">
-				<p>Copyright &copy; 2015. Asana All rights reserved</p>
-			</div>
-		</footer>
-		<div class="mobileMenu">
-			<ul>
-				<li class="current-menu-item"><a href="index.html">Accueil</a></li>
-				<li class="current-menu-item"><a href="classes.html">Intranet</a>
-					<ul class="sub-menu">
-						<li><a href="events.html">Mes cours</a></li>
-					</ul>
-				</li>
-				<li class="current-menu-item"><a href="index.html">Déconnexion</a></li>
-			</ul>
-		</div>
-	</body>
-	</html>
+	</div>
+</body>
+</html>
